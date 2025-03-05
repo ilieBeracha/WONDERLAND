@@ -21,14 +21,16 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <motion.section
+    <div
+      className="mx-auto px-4 sm:px-6 lg:px-8 gap-10 flex flex-col items-center justify-center w-screen "
       id="about-us"
-      initial={{ opacity: 0.5, y: 50 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      className="relative  py-52 w-screen"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-10 flex flex-col items-center justify-center">
+      <motion.section
+        initial={{ opacity: 0.5, y: 50 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="relative  py-52 max-w-7xl "
+      >
         <div className="text-center mb-16">
           <h2 className="text-xl font-medium text-gray-600 mb-3 uppercase tracking-[0.2em]">
             About Us
@@ -71,7 +73,7 @@ export default function AboutUs() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </motion.section>
+      </motion.section>
+    </div>
   );
 }

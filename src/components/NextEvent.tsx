@@ -1,5 +1,3 @@
-import React from "react";
-
 interface TimeLeft {
   days: number;
   hours: number;

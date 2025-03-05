@@ -8,7 +8,7 @@ export default function Navbar() {
           <div className="flex items-center justify-center">
             {/* <Music2 className="h-7 w-7 text-purple-500" /> */}
             <a
-              href="#wonderland"
+              href="#hero"
               className="ml-2 text-3xl font-bold text-gray-300"
             >
               WONDERLAND

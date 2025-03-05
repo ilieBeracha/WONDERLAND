@@ -83,7 +83,7 @@ export default function AudioPlayer() {
         id="audio-player"
         initial={{ opacity: 0.6, y: 50 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         className="relative bg-gray-900 py-14 overflow-hidden shadow-lg shadow-gray-900/50"
       >
         <div className="relative max-w-6xl mx-auto px-6">

@@ -13,13 +13,7 @@ const products = [
     name: "Bass Drop Hoodie",
     price: "$59.99",
     image:
-      "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-  },
-  {
-    name: "Wonderland Tour Shirt",
-    price: "$34.99",
-    image:
-      "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
   },
 ];
 
@@ -44,10 +38,10 @@ export default function Store() {
   return (
     <motion.section
       id="store"
-      initial={{ opacity: 0.5, y: 50 }}
+      initial={{ opacity: 0.8, y: 50 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="py-48"
+      className="py-28"
     >
       <div className="max-w-6xl mx-auto px-6 ">
         <h2 className="text-4xl md:text-6xl font-extrabold text-black mb-8 text-center">
@@ -56,15 +50,9 @@ export default function Store() {
         <p className="text-black text-center mb-28">
           Official Wonderland Merchandise - In collaboration with TAMU
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {products.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0.5, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: 1 }}
-              className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-            >
+        <div className="grid grid-cols-2 gap-6 justify-center">
+          {products.map((product) => (
+            <div className="bg-gray-800  rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all gap-4 duration-300">
               <img
                 src={product.image}
                 alt={product.name}
@@ -83,7 +71,7 @@ export default function Store() {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

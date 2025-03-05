@@ -10,7 +10,10 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[80vh] ">
+    <div
+      className="relative flex flex-col items-center justify-center h-[80vh] "
+      id="hero"
+    >
       <motion.div
         initial={{ opacity: 0.5, scale: 1.1 }}
         animate={{ opacity: 1, scale: 1 }}
