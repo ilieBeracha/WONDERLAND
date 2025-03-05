@@ -9,7 +9,7 @@ export default function Navbar() {
             {/* <Music2 className="h-7 w-7 text-purple-500" /> */}
             <a
               href="#wonderland"
-              className="ml-2 text-2xl font-bold text-gray-300"
+              className="ml-2 text-3xl font-bold text-gray-300"
             >
               WONDERLAND
             </a>

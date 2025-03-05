@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import event1 from "../assets/images/event1.jpg";
 import event2 from "../assets/images/event2.jpg";
 import event3 from "../assets/images/event3.jpg";
@@ -31,9 +33,29 @@ const events = [
 ];
 
 export default function Events() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById("events");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.75) {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section
+    <motion.section
       id="events"
+      initial={{ opacity: 0.5, y: 50 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5, ease: "easeOut" }}
       className="relative bg-gray-900 py-24 overflow-hidden shadow-lg shadow-gray-900/50"
     >
       {/* Floating Neon Glow Elements */}
@@ -52,8 +74,11 @@ export default function Events() {
 
         <div className="space-y-24">
           {events.map((event, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0.8, y: 50 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1.2, delay: isVisible ? index * 0.4 : 0 }}
               className={`flex flex-col md:flex-row ${
                 event.position === "right" ? "md:flex-row-reverse" : ""
               } items-center md:items-start gap-10`}
@@ -80,10 +105,10 @@ export default function Events() {
                 <p className="text-gray-300 text-lg mt-2">{event.venue}</p>
                 <p className="text-gray-400 mt-4">{event.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

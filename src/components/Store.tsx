@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ShoppingCart } from "lucide-react";
 
 const products = [
@@ -22,9 +24,32 @@ const products = [
 ];
 
 export default function Store() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById("store");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.75) {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section id="store" className=" py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <motion.section
+      id="store"
+      initial={{ opacity: 0.5, y: 50 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5, ease: "easeOut" }}
+      className="py-48"
+    >
+      <div className="max-w-6xl mx-auto px-6 ">
         <h2 className="text-4xl md:text-6xl font-extrabold text-black mb-8 text-center">
           Tamu:Studio
         </h2>
@@ -33,8 +58,11 @@ export default function Store() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((product, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0.5, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, delay: 1 }}
               className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <img
@@ -55,10 +83,10 @@ export default function Store() {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
